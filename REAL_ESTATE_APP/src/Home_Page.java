@@ -40,11 +40,11 @@ public class Home_Page extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel_Index = new javax.swing.JLabel();
-        jButton_Property = new javax.swing.JButton();
-        jButton_Property_Type = new javax.swing.JButton();
-        jButton_Property_Image = new javax.swing.JButton();
-        jButton_Owner = new javax.swing.JButton();
-        jButton_Client = new javax.swing.JButton();
+        jLabel_Property = new javax.swing.JLabel();
+        jLabel_Property_Type = new javax.swing.JLabel();
+        jLabel_Property_Image = new javax.swing.JLabel();
+        jLabel_Owner = new javax.swing.JLabel();
+        jLabel_Client = new javax.swing.JLabel();
         jLabel1_HomeTitle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -78,25 +78,40 @@ public class Home_Page extends javax.swing.JFrame {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        jButton_Property.setFont(new java.awt.Font("Buxton Sketch", 1, 24)); // NOI18N
-        jButton_Property.setForeground(new java.awt.Color(255, 0, 51));
-        jButton_Property.setText("Property");
+        jLabel_Property.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel_Property.setFont(new java.awt.Font("Buxton Sketch", 1, 24)); // NOI18N
+        jLabel_Property.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel_Property.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_Property.setText("Property");
+        jLabel_Property.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
-        jButton_Property_Type.setFont(new java.awt.Font("Buxton Sketch", 1, 24)); // NOI18N
-        jButton_Property_Type.setForeground(new java.awt.Color(255, 0, 0));
-        jButton_Property_Type.setText("Property_TYPE");
+        jLabel_Property_Type.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel_Property_Type.setFont(new java.awt.Font("Buxton Sketch", 1, 24)); // NOI18N
+        jLabel_Property_Type.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel_Property_Type.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_Property_Type.setText("Property_TYPE");
+        jLabel_Property_Type.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
-        jButton_Property_Image.setFont(new java.awt.Font("Buxton Sketch", 1, 24)); // NOI18N
-        jButton_Property_Image.setForeground(new java.awt.Color(255, 0, 51));
-        jButton_Property_Image.setText("Property_IMAGE");
+        jLabel_Property_Image.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel_Property_Image.setFont(new java.awt.Font("Buxton Sketch", 1, 24)); // NOI18N
+        jLabel_Property_Image.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel_Property_Image.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_Property_Image.setText("Property_IMAGE");
+        jLabel_Property_Image.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
-        jButton_Owner.setFont(new java.awt.Font("Buxton Sketch", 1, 24)); // NOI18N
-        jButton_Owner.setForeground(new java.awt.Color(255, 0, 51));
-        jButton_Owner.setText("Owner");
+        jLabel_Owner.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel_Owner.setFont(new java.awt.Font("Buxton Sketch", 1, 24)); // NOI18N
+        jLabel_Owner.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel_Owner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_Owner.setText("Owner");
+        jLabel_Owner.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
-        jButton_Client.setFont(new java.awt.Font("Buxton Sketch", 1, 24)); // NOI18N
-        jButton_Client.setForeground(new java.awt.Color(255, 0, 51));
-        jButton_Client.setText("Client");
+        jLabel_Client.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel_Client.setFont(new java.awt.Font("Buxton Sketch", 1, 24)); // NOI18N
+        jLabel_Client.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel_Client.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_Client.setText("Client");
+        jLabel_Client.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -104,30 +119,30 @@ public class Home_Page extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton_Property_Image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton_Property_Type, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton_Property, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton_Owner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton_Client, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(61, 61, 61)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel_Property_Type, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_Client, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_Owner, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_Property, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_Property_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
-                .addComponent(jButton_Property)
-                .addGap(36, 36, 36)
-                .addComponent(jButton_Property_Type)
-                .addGap(41, 41, 41)
-                .addComponent(jButton_Property_Image)
+                .addGap(59, 59, 59)
+                .addComponent(jLabel_Property, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
-                .addComponent(jButton_Owner)
-                .addGap(40, 40, 40)
-                .addComponent(jButton_Client)
-                .addGap(0, 139, Short.MAX_VALUE))
+                .addComponent(jLabel_Property_Type, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(jLabel_Property_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(jLabel_Owner, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(jLabel_Client, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
         );
 
         jLabel1_HomeTitle.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
@@ -208,13 +223,13 @@ public class Home_Page extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton_Client;
-    private javax.swing.JButton jButton_Owner;
-    private javax.swing.JButton jButton_Property;
-    private javax.swing.JButton jButton_Property_Image;
-    private javax.swing.JButton jButton_Property_Type;
     private javax.swing.JLabel jLabel1_HomeTitle;
+    private javax.swing.JLabel jLabel_Client;
     private javax.swing.JLabel jLabel_Index;
+    private javax.swing.JLabel jLabel_Owner;
+    private javax.swing.JLabel jLabel_Property;
+    private javax.swing.JLabel jLabel_Property_Image;
+    private javax.swing.JLabel jLabel_Property_Type;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
