@@ -13,14 +13,14 @@ import javax.swing.border.Border;
  *
  * @author Admin
  */
-public class OWNER_WINDOW extends javax.swing.JFrame {
+public class Owner_Window extends javax.swing.JFrame {
 
     /**
      * Creates new form OWNER_WINDOW
      */
-    public OWNER_WINDOW() {
+    public Owner_Window() {
         initComponents();
-        
+        this.setLocationRelativeTo (null);
         Border panel_title_border=BorderFactory.createMatteBorder(0, 0, 3, 0, Color.RED);
         jLabel1_Owner_Title.setBorder(panel_title_border);
         
@@ -68,7 +68,7 @@ public class OWNER_WINDOW extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 153));
+        jPanel1.setBackground(new java.awt.Color(255, 153, 0));
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 204));
 
@@ -364,20 +364,21 @@ public class OWNER_WINDOW extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(OWNER_WINDOW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Owner_Window.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(OWNER_WINDOW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Owner_Window.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(OWNER_WINDOW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Owner_Window.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(OWNER_WINDOW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Owner_Window.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new OWNER_WINDOW().setVisible(true);
+                new Owner_Window().setVisible(true);
             }
         });
     }

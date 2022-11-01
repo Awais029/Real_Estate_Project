@@ -13,12 +13,12 @@ import javax.swing.border.Border;
  *
  * @author Lenovo
  */
-public class CLIENT_WINDOW extends javax.swing.JFrame {
+public class Client_Window extends javax.swing.JFrame {
 
     /*
 
 */
-    public CLIENT_WINDOW() {
+    public Client_Window() {
         initComponents();
         Border panel_title_border=BorderFactory.createMatteBorder(0, 0, 3, 0, Color.RED);
         jLabel1_Owner_Title.setBorder(panel_title_border);
@@ -363,20 +363,21 @@ public class CLIENT_WINDOW extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CLIENT_WINDOW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Client_Window.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CLIENT_WINDOW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Client_Window.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CLIENT_WINDOW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Client_Window.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CLIENT_WINDOW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Client_Window.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CLIENT_WINDOW().setVisible(true);
+                new Client_Window().setVisible(true);
             }
         });
     }

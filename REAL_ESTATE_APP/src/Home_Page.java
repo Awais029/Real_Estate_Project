@@ -1,5 +1,6 @@
 
 import java.awt.Color;
+import java.awt.event.WindowEvent;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 
@@ -8,10 +9,6 @@ import javax.swing.border.Border;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
-/**
- *
- * @author sania
- */
 public class Home_Page extends javax.swing.JFrame {
 
     /**
@@ -19,14 +16,29 @@ public class Home_Page extends javax.swing.JFrame {
      */
     public Home_Page() {
         initComponents();
-        
+        this.setLocationRelativeTo (null);
+        //set the logo picture 
+        jLabel_APP_ICON.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/qqq.jpg")));
+         jLabel1_HomePage_Icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/homepage.jpeg")));
           //set border to the title of the page
-        Border title_border=BorderFactory.createMatteBorder(0, 0, 3, 0, Color.RED);
-        jLabel1_HomeTitle.setBorder(title_border);
+        Border logo_border=BorderFactory.createMatteBorder(1, 1, 1, 1, Color.WHITE);
+        jLabel1_HomeTitle.setBorder(logo_border);
        
+        //set border to the app border
+        Border appname_border=BorderFactory.createMatteBorder(0, 0, 3, 0, Color.WHITE);
+        jLabel1_APP_Name.setBorder(appname_border);
                
+        //set border to the menu
+        Border menu_items_border=BorderFactory.createMatteBorder(0, 0, 1, 0, Color.YELLOW);
+        jButton1_Property.setBorder(menu_items_border);
+        jButton1_Property_Type.setBorder(menu_items_border);
+        jButton1_Property_Images.setBorder(menu_items_border);
+        jButton1_Owner.setBorder(menu_items_border);
+        jButton1_Client.setBorder(menu_items_border);
+       
     }
-
+     
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,116 +51,178 @@ public class Home_Page extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel_Index = new javax.swing.JLabel();
-        jLabel_Property = new javax.swing.JLabel();
-        jLabel_Property_Type = new javax.swing.JLabel();
-        jLabel_Property_Image = new javax.swing.JLabel();
-        jLabel_Owner = new javax.swing.JLabel();
-        jLabel_Client = new javax.swing.JLabel();
+        jLabel_APP_ICON = new javax.swing.JLabel();
+        jLabel1_APP_Name = new javax.swing.JLabel();
+        jButton1_Property = new javax.swing.JButton();
+        jButton1_Property_Type = new javax.swing.JButton();
+        jButton1_Property_Images = new javax.swing.JButton();
+        jButton1_Owner = new javax.swing.JButton();
+        jButton1_Client = new javax.swing.JButton();
         jLabel1_HomeTitle = new javax.swing.JLabel();
+        jLabel1_HomePage_Icon = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
 
-        jPanel3.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel3.setBackground(new java.awt.Color(255, 153, 51));
 
-        jLabel_Index.setBackground(new java.awt.Color(204, 102, 255));
-        jLabel_Index.setFont(new java.awt.Font("Algerian", 1, 24)); // NOI18N
-        jLabel_Index.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel_Index.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_Index.setText("INDEX");
+        jLabel_APP_ICON.setBackground(new java.awt.Color(153, 153, 255));
+        jLabel_APP_ICON.setOpaque(true);
+
+        jLabel1_APP_Name.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
+        jLabel1_APP_Name.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1_APP_Name.setText("MYAPP");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel_Index, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel_APP_ICON, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(jLabel1_APP_Name)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel_Index, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel_APP_ICON, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1_APP_Name))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel_Property.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel_Property.setFont(new java.awt.Font("Buxton Sketch", 1, 24)); // NOI18N
-        jLabel_Property.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel_Property.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_Property.setText("Property");
-        jLabel_Property.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jButton1_Property.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1_Property.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        jButton1_Property.setForeground(new java.awt.Color(102, 102, 102));
+        jButton1_Property.setText("Property");
+        jButton1_Property.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1_PropertyMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1_PropertyMouseExited(evt);
+            }
+        });
+        jButton1_Property.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1_PropertyActionPerformed(evt);
+            }
+        });
 
-        jLabel_Property_Type.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel_Property_Type.setFont(new java.awt.Font("Buxton Sketch", 1, 24)); // NOI18N
-        jLabel_Property_Type.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel_Property_Type.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_Property_Type.setText("Property_TYPE");
-        jLabel_Property_Type.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jButton1_Property_Type.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1_Property_Type.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        jButton1_Property_Type.setForeground(new java.awt.Color(102, 102, 102));
+        jButton1_Property_Type.setText("Property-Type");
+        jButton1_Property_Type.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1_Property_TypeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1_Property_TypeMouseExited(evt);
+            }
+        });
+        jButton1_Property_Type.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1_Property_TypeActionPerformed(evt);
+            }
+        });
 
-        jLabel_Property_Image.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel_Property_Image.setFont(new java.awt.Font("Buxton Sketch", 1, 24)); // NOI18N
-        jLabel_Property_Image.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel_Property_Image.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_Property_Image.setText("Property_IMAGE");
-        jLabel_Property_Image.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jButton1_Property_Images.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1_Property_Images.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        jButton1_Property_Images.setForeground(new java.awt.Color(102, 102, 102));
+        jButton1_Property_Images.setText("Property-IMAGES");
+        jButton1_Property_Images.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1_Property_ImagesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1_Property_ImagesMouseExited(evt);
+            }
+        });
+        jButton1_Property_Images.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1_Property_ImagesActionPerformed(evt);
+            }
+        });
 
-        jLabel_Owner.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel_Owner.setFont(new java.awt.Font("Buxton Sketch", 1, 24)); // NOI18N
-        jLabel_Owner.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel_Owner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_Owner.setText("Owner");
-        jLabel_Owner.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jButton1_Owner.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1_Owner.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        jButton1_Owner.setForeground(new java.awt.Color(102, 102, 102));
+        jButton1_Owner.setText("Owner");
+        jButton1_Owner.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1_OwnerMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1_OwnerMouseExited(evt);
+            }
+        });
+        jButton1_Owner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1_OwnerActionPerformed(evt);
+            }
+        });
 
-        jLabel_Client.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel_Client.setFont(new java.awt.Font("Buxton Sketch", 1, 24)); // NOI18N
-        jLabel_Client.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel_Client.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_Client.setText("Client");
-        jLabel_Client.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jButton1_Client.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1_Client.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        jButton1_Client.setForeground(new java.awt.Color(102, 102, 102));
+        jButton1_Client.setText("Client");
+        jButton1_Client.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1_ClientMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1_ClientMouseExited(evt);
+            }
+        });
+        jButton1_Client.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1_ClientActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel_Property_Type, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel_Client, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel_Owner, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel_Property, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel_Property_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1_Client, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1_Owner, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1_Property_Images, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1_Property_Type, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1_Property, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
-                .addComponent(jLabel_Property, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(jLabel_Property_Type, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(jLabel_Property_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(jLabel_Owner, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addComponent(jLabel_Client, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
+                .addGap(49, 49, 49)
+                .addComponent(jButton1_Property, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1_Property_Type, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1_Property_Images, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1_Owner, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1_Client, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(136, Short.MAX_VALUE))
         );
 
         jLabel1_HomeTitle.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1_HomeTitle.setForeground(new java.awt.Color(0, 0, 204));
         jLabel1_HomeTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1_HomeTitle.setText("WELCOME TO REAL ESTATE WEBSITE");
+        jLabel1_HomeTitle.setText("WELCOME TO REAL ESTATE APP");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -156,9 +230,14 @@ public class Home_Page extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63)
-                .addComponent(jLabel1_HomeTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(jLabel1_HomeTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                        .addComponent(jLabel1_HomePage_Icon, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,7 +245,9 @@ public class Home_Page extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel1_HomeTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(8, 8, 8)
+                .addComponent(jLabel1_HomePage_Icon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -174,18 +255,101 @@ public class Home_Page extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 68, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 1, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1_PropertyMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1_PropertyMouseEntered
+       jButton1_Property.setBackground(Color.WHITE);
+        jButton1_Property.setForeground(new Color(102, 102, 102));
+    }//GEN-LAST:event_jButton1_PropertyMouseEntered
+
+    private void jButton1_PropertyMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1_PropertyMouseExited
+        jButton1_Property.setBackground(new Color(102, 102, 102));
+         jButton1_Property.setForeground(Color.WHITE);
+    }//GEN-LAST:event_jButton1_PropertyMouseExited
+
+    private void jButton1_PropertyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_PropertyActionPerformed
+        // 
+        this.dispose();
+        Property_Window p =new Property_Window();
+        p.setVisible(true);
+    }//GEN-LAST:event_jButton1_PropertyActionPerformed
+
+    private void jButton1_Property_TypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_Property_TypeActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        Property_Type pt = new Property_Type();
+        pt.setVisible(true);
+    }//GEN-LAST:event_jButton1_Property_TypeActionPerformed
+
+    private void jButton1_Property_TypeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1_Property_TypeMouseEntered
+        jButton1_Property_Type.setBackground(Color.WHITE);
+        jButton1_Property_Type.setForeground(new Color(102, 102, 102));
+    }//GEN-LAST:event_jButton1_Property_TypeMouseEntered
+
+    private void jButton1_Property_TypeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1_Property_TypeMouseExited
+       jButton1_Property_Type.setBackground(new Color(102, 102, 102));
+      jButton1_Property_Type.setForeground(Color.WHITE);
+    }//GEN-LAST:event_jButton1_Property_TypeMouseExited
+
+    private void jButton1_Property_ImagesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1_Property_ImagesMouseEntered
+         jButton1_Property_Images.setBackground(Color.WHITE);
+        jButton1_Property_Images.setForeground(new Color(102, 102, 102));
+    }//GEN-LAST:event_jButton1_Property_ImagesMouseEntered
+
+    private void jButton1_Property_ImagesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1_Property_ImagesMouseExited
+        jButton1_Property_Images.setBackground(new Color(102, 102, 102));
+      jButton1_Property_Images.setForeground(Color.WHITE);
+        
+    }//GEN-LAST:event_jButton1_Property_ImagesMouseExited
+
+    private void jButton1_OwnerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1_OwnerMouseEntered
+        jButton1_Property_Images.setBackground(Color.WHITE);
+        jButton1_Property_Images.setForeground(new Color(102, 102, 102));
+    }//GEN-LAST:event_jButton1_OwnerMouseEntered
+
+    private void jButton1_OwnerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1_OwnerMouseExited
+         jButton1_Owner.setBackground(new Color(102, 102, 102));
+      jButton1_Owner.setForeground(Color.WHITE);
+    }//GEN-LAST:event_jButton1_OwnerMouseExited
+
+    private void jButton1_ClientMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1_ClientMouseEntered
+         jButton1_Client.setBackground(Color.WHITE);
+        jButton1_Client.setForeground(new Color(102, 102, 102));
+    }//GEN-LAST:event_jButton1_ClientMouseEntered
+
+    private void jButton1_ClientMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1_ClientMouseExited
+       jButton1_Client.setBackground(new Color(102, 102, 102));
+      jButton1_Client.setForeground(Color.WHITE);
+    }//GEN-LAST:event_jButton1_ClientMouseExited
+
+    private void jButton1_OwnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_OwnerActionPerformed
+        this.dispose();
+        Owner_Window o=new Owner_Window();
+        o.setVisible(true);
+    }//GEN-LAST:event_jButton1_OwnerActionPerformed
+
+    private void jButton1_Property_ImagesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_Property_ImagesActionPerformed
+        this.dispose();
+        Property_Image pi=new  Property_Image();
+        pi.setVisible(true);
+    }//GEN-LAST:event_jButton1_Property_ImagesActionPerformed
+
+    private void jButton1_ClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_ClientActionPerformed
+        this.dispose();
+        Client_Window cw=new Client_Window();
+        cw.setVisible(true);
+    }//GEN-LAST:event_jButton1_ClientActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,15 +387,19 @@ public class Home_Page extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1_Client;
+    private javax.swing.JButton jButton1_Owner;
+    private javax.swing.JButton jButton1_Property;
+    private javax.swing.JButton jButton1_Property_Images;
+    private javax.swing.JButton jButton1_Property_Type;
+    private javax.swing.JLabel jLabel1_APP_Name;
+    private javax.swing.JLabel jLabel1_HomePage_Icon;
     private javax.swing.JLabel jLabel1_HomeTitle;
-    private javax.swing.JLabel jLabel_Client;
-    private javax.swing.JLabel jLabel_Index;
-    private javax.swing.JLabel jLabel_Owner;
-    private javax.swing.JLabel jLabel_Property;
-    private javax.swing.JLabel jLabel_Property_Image;
-    private javax.swing.JLabel jLabel_Property_Type;
+    private javax.swing.JLabel jLabel_APP_ICON;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
+
+    
 }
