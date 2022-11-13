@@ -95,7 +95,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jButton1_Client" alignment="1" max="32767" attributes="0"/>
                           <Component id="jButton1_Owner" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jButton1_Property_Images" alignment="1" max="32767" attributes="0"/>
+                          <Component id="jButton1_Property_Images" alignment="1" pref="231" max="32767" attributes="0"/>
                           <Component id="jButton1_Property_Type" alignment="1" max="32767" attributes="0"/>
                           <Component id="jButton1_Property" alignment="1" max="32767" attributes="0"/>
                       </Group>
@@ -136,9 +136,9 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel_APP_ICON" min="-2" pref="70" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabel1_APP_Name" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="35" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -148,7 +148,10 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel_APP_ICON" min="-2" pref="60" max="-2" attributes="0"/>
-                              <Component id="jLabel1_APP_Name" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                  <Component id="jLabel1_APP_Name" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
