@@ -289,7 +289,7 @@ public class Home_Page extends javax.swing.JFrame {
     private void jButton1_Property_TypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_Property_TypeActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        Property_Type pt = new Property_Type();
+        Property_Type_Operation pt = new Property_Type_Operation();
         pt.setVisible(true);
     }//GEN-LAST:event_jButton1_Property_TypeActionPerformed
 
