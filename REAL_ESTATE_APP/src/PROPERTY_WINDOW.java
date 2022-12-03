@@ -21,8 +21,8 @@ public class Property_Window extends javax.swing.JFrame {
     public Property_Window() {
         initComponents();
         this.setLocationRelativeTo (null);
-         Border panel_title_border=BorderFactory.createMatteBorder(0, 0, 3, 0, Color.RED);
-        jLabel1_Owner_Title.setBorder(panel_title_border);
+         Border panel_title_border=BorderFactory.createMatteBorder(0, 0, 3, 0, new Color(255,255,255));
+         jPanel_Property_Title.setBorder(panel_title_border);
         
         //set border to jbuttons
         Border button_border=BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(255,255,255));
@@ -42,8 +42,8 @@ public class Property_Window extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1_Owner_Title = new javax.swing.JLabel();
+        jPanel_Property_Title = new javax.swing.JPanel();
+        jLabel1_Property_Title = new javax.swing.JLabel();
         jLabel_ID = new javax.swing.JLabel();
         jLabel_Name = new javax.swing.JLabel();
         jTextField_id = new javax.swing.JTextField();
@@ -81,28 +81,28 @@ public class Property_Window extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 204));
 
-        jPanel2.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel_Property_Title.setBackground(new java.awt.Color(0, 153, 153));
 
-        jLabel1_Owner_Title.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
-        jLabel1_Owner_Title.setForeground(new java.awt.Color(0, 0, 204));
-        jLabel1_Owner_Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1_Owner_Title.setText("Property");
+        jLabel1_Property_Title.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        jLabel1_Property_Title.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1_Property_Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1_Property_Title.setText("Property");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(587, Short.MAX_VALUE)
-                .addComponent(jLabel1_Owner_Title, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(504, 504, 504))
+        javax.swing.GroupLayout jPanel_Property_TitleLayout = new javax.swing.GroupLayout(jPanel_Property_Title);
+        jPanel_Property_Title.setLayout(jPanel_Property_TitleLayout);
+        jPanel_Property_TitleLayout.setHorizontalGroup(
+            jPanel_Property_TitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_Property_TitleLayout.createSequentialGroup()
+                .addGap(450, 450, 450)
+                .addComponent(jLabel1_Property_Title, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1_Owner_Title, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+        jPanel_Property_TitleLayout.setVerticalGroup(
+            jPanel_Property_TitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_Property_TitleLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel1_Property_Title, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         jLabel_ID.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -172,7 +172,7 @@ public class Property_Window extends javax.swing.JFrame {
 
         jLabel_Name2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel_Name2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_Name2.setText("Price(usd):");
+        jLabel_Name2.setText("Price(pkr):");
 
         jTextField_OwnerId.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         jTextField_OwnerId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -180,7 +180,7 @@ public class Property_Window extends javax.swing.JFrame {
 
         jLabel_Name3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel_Name3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_Name3.setText("O:wner Id");
+        jLabel_Name3.setText("Owner Id");
 
         jTextField_Price.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         jTextField_Price.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -266,7 +266,7 @@ public class Property_Window extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel_Property_Title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -333,9 +333,8 @@ public class Property_Window extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jCheckBox_Backyard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jCheckBox_Pool, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jCheckBox_Balcone, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jCheckBox_Pool, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jCheckBox_Balcone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jCheckBox_Garage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(190, 190, 190))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -346,12 +345,12 @@ public class Property_Window extends javax.swing.JFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                         .addGap(141, 141, 141)
                                         .addComponent(jButton_Remove_Property, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap(236, Short.MAX_VALUE))))))
+                                .addContainerGap(47, Short.MAX_VALUE))))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel_Property_Title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(77, 77, 77)
@@ -361,7 +360,6 @@ public class Property_Window extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(79, 79, 79)
                         .addComponent(jButton_Search_Property, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -415,7 +413,7 @@ public class Property_Window extends javax.swing.JFrame {
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel_description))))
                         .addGap(44, 44, 44)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -538,7 +536,7 @@ public class Property_Window extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox_Pool;
     private javax.swing.JComboBox<String> jComboBox_Type;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel1_Owner_Title;
+    private javax.swing.JLabel jLabel1_Property_Title;
     private javax.swing.JLabel jLabel_ID;
     private javax.swing.JLabel jLabel_Name;
     private javax.swing.JLabel jLabel_Name1;
@@ -550,7 +548,7 @@ public class Property_Window extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_Name7;
     private javax.swing.JLabel jLabel_description;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel_Property_Title;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinner_Age;

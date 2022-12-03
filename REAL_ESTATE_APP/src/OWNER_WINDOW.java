@@ -1,10 +1,14 @@
 
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
 
@@ -36,7 +40,7 @@ public class Owner_Window extends javax.swing.JFrame {
          jButton_Remove_Owner.setBorder(button_border);
          jButton_Refresh.setBorder(button_border);
          
-         //fillJtablewithClientsData();
+        fillJtableWithOwnersData();
     }
  
     //we will create a function to populate the jtable with all the owners datausing the array list
@@ -64,7 +68,12 @@ public class Owner_Window extends javax.swing.JFrame {
         }
         
         DefaultTableModel model=new DefaultTableModel (rows, colNames);
-        jTable1.setModel(model);
+        property_table.setModel(model);
+        
+        property_table.setRowHeight(40);
+        property_table.setSelectionBackground(Color.DARK_GRAY);
+        property_table.getColumnModel().getColumn(0).setPreferredWidth(25);
+         property_table.getColumnModel().getColumn(5).setPreferredWidth(100);
     }
     
     /**
@@ -97,7 +106,7 @@ public class Owner_Window extends javax.swing.JFrame {
         jLabel_Name3 = new javax.swing.JLabel();
         jTextField_Email = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        property_table = new javax.swing.JTable();
         jButton_bow = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -191,6 +200,11 @@ public class Owner_Window extends javax.swing.JFrame {
         jButton_Refresh.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton_Refresh.setForeground(new java.awt.Color(255, 255, 255));
         jButton_Refresh.setText("Refresh");
+        jButton_Refresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_RefreshActionPerformed(evt);
+            }
+        });
 
         jButton_Add_Owner.setBackground(new java.awt.Color(204, 0, 204));
         jButton_Add_Owner.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -234,7 +248,7 @@ public class Owner_Window extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        property_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -242,12 +256,12 @@ public class Owner_Window extends javax.swing.JFrame {
 
             }
         ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        property_table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+                property_tableMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(property_table);
 
         jButton_bow.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButton_bow.setText("Back");
@@ -389,7 +403,7 @@ public class Owner_Window extends javax.swing.JFrame {
     
     private void jButton_Add_OwnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Add_OwnerActionPerformed
         //get owner data
-        /*String fname = jTextField_FName.getText();
+        String fname = jTextField_FName.getText();
         String lname = jTextField_LName.getText();
         String phone = jTextField_Phone.getText();
         String email = jTextField_Email.getText();
@@ -413,8 +427,8 @@ public class Owner_Window extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "Owner Not Add to the system", "Add Owner", 2);
         } 
-        }*/
-        
+        }
+        /*
         //add a new type
         String fname = jTextField_FName.getText();
         String lname = jTextField_LName.getText();
@@ -457,13 +471,13 @@ public class Owner_Window extends javax.swing.JFrame {
                 jTextField_Phone.setText(null);
                 jTextField_Email.setText(null);
                 jTextArea_Address.setText(null);
-        }
+        }*/
     }//GEN-LAST:event_jButton_Add_OwnerActionPerformed
 
     private void jButton_Edit_OwnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Edit_OwnerActionPerformed
         //edit the owner data
         //get the owner data
-        int ownerId=Integer.valueOf(jTextField_id.getText());
+        //
         String fname = jTextField_FName.getText();
         String lname = jTextField_LName.getText();
         String phone = jTextField_Phone.getText();
@@ -471,30 +485,41 @@ public class Owner_Window extends javax.swing.JFrame {
         String address = jTextArea_Address.getText();
         
          P_Owner owner = new P_Owner();
-         
-         //before editing the owner data we need to check if the required data are empty
-        //required data--> first name, last name, phone, address
+         try{
+             
+             int ownerId=Integer.valueOf(jTextField_id.getText());
+             
+              //before editing the owner data we need to check if the required data are empty
+              //required data--> first name, last name, phone, address
         
-         
-         if(fname.trim().equals("") || lname.trim().equals("") || phone.trim().equals("") || address.trim().equals(""))
+              if(fname.trim().equals("") || lname.trim().equals("") || phone.trim().equals("") || address.trim().equals(""))
         {
-        JOptionPane.showMessageDialog(null, "Enter the Required Owner Information[first name, last name, phone, address]", "Add Owner", 2);
+        JOptionPane.showMessageDialog(null, "Enter the Required Owner Information[first name, last name, phone, address]", "Edit Owner", 2);
         }
         else
         {
         if(owner.editOwnerData(new P_Owner(ownerId, fname, lname, phone, email, address)))
                 {
-                    JOptionPane.showMessageDialog(null, "New Owner Data Edited", "Edit Owner", 1);
+                    JOptionPane.showMessageDialog(null, "Owner Data Edited", "Edit Owner", 1);
                 }else
-        {
+                {
             JOptionPane.showMessageDialog(null, "Owner Data Not Edited", "Edit Owner", 2);
-        } 
+                } 
         }
+        }catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, ex.getMessage() + "Enter a valid Owner ID",  "Invalid Id", 0);
+        }
+        
+        
+         
+        
     }//GEN-LAST:event_jButton_Edit_OwnerActionPerformed
 
     private void jButton_Remove_OwnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Remove_OwnerActionPerformed
         
-        //deleting the selected owner from the system
+        try{
+            //deleting the selected owner from the system
         int ownerId=Integer.valueOf(jTextField_id.getText());
         
         P_Owner owner = new P_Owner();
@@ -518,28 +543,38 @@ public class Owner_Window extends javax.swing.JFrame {
                 }
             }
         }
+        }catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, ex.getMessage() + "Enter a valid Owner ID",  "Invalid Id", 0);
+        }
+        
     }//GEN-LAST:event_jButton_Remove_OwnerActionPerformed
 
     private void jTextField_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_idActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_idActionPerformed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-       int selectedRowIndex=jTable1.getSelectedRow();
-       jTextField_id.setText(jTable1.getValueAt(selectedRowIndex, 0).toString());
-       jTextField_FName.setText(jTable1.getValueAt(selectedRowIndex, 1).toString());
-       jTextField_LName.setText(jTable1.getValueAt(selectedRowIndex, 2).toString());
-       jTextField_Phone.setText(jTable1.getValueAt(selectedRowIndex, 3).toString());
-       jTextField_Email.setText(jTable1.getValueAt(selectedRowIndex, 4).toString());
-       jTextArea_Address.setText(jTable1.getValueAt(selectedRowIndex, 5).toString());
-    }//GEN-LAST:event_jTable1MouseClicked
+    private void property_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_property_tableMouseClicked
+       int selectedRowIndex=property_table.getSelectedRow();
+       jTextField_id.setText(property_table.getValueAt(selectedRowIndex, 0).toString());
+       jTextField_FName.setText(property_table.getValueAt(selectedRowIndex, 1).toString());
+       jTextField_LName.setText(property_table.getValueAt(selectedRowIndex, 2).toString());
+       jTextField_Phone.setText(property_table.getValueAt(selectedRowIndex, 3).toString());
+       jTextField_Email.setText(property_table.getValueAt(selectedRowIndex, 4).toString());
+       jTextArea_Address.setText(property_table.getValueAt(selectedRowIndex, 5).toString());
+    }//GEN-LAST:event_property_tableMouseClicked
 
     private void jButton_bowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_bowActionPerformed
         this.dispose();
         Home_Page ow = new Home_Page();
         ow.setVisible(true);
     }//GEN-LAST:event_jButton_bowActionPerformed
-    
+
+    private void jButton_RefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RefreshActionPerformed
+        // TODO add your handling code here:
+        fillJtableWithOwnersData();
+    }//GEN-LAST:event_jButton_RefreshActionPerformed
+ 
     /**
      * @param args the command line arguments
      */
@@ -571,6 +606,7 @@ public class Owner_Window extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+               
                 new Owner_Window().setVisible(true);
             }
         });
@@ -593,12 +629,12 @@ public class Owner_Window extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea_Address;
     private javax.swing.JTextField jTextField_Email;
     private javax.swing.JTextField jTextField_FName;
     private javax.swing.JTextField jTextField_LName;
     private javax.swing.JTextField jTextField_Phone;
     private javax.swing.JTextField jTextField_id;
+    private javax.swing.JTable property_table;
     // End of variables declaration//GEN-END:variables
 }

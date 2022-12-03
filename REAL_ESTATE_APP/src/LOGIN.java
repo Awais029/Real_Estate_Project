@@ -240,20 +240,16 @@ public class LOGIN extends javax.swing.JFrame {
            Password_Icon.setForeground(new Color(153,153,153));
        } 
     }//GEN-LAST:event_jPasswordField1FocusLost
-
-    private void jButton_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_LoginActionPerformed
-        // TODO add your handling code here:
-        String uname=jTextField_Username.getText();
-        String pass=jPasswordField1.getText();
+public boolean login(String uname, String pass){
         boolean flag = false;
         for(int i=0; i<pass.length(); i++){
             if(pass.charAt(i) == '@'){
                 flag = true;
                 break;
             }
-            else{
+            else if(pass.charAt(i) != '@'){
                 flag = false;
-              
+                System.out.println("Invalid Password");
             }
         }
      
@@ -284,17 +280,19 @@ public class LOGIN extends javax.swing.JFrame {
                    Home_Page mainform=new Home_Page();
                    mainform.setVisible(true);
                    mainform.pack();
-                   
                    //close the login window
                    this.dispose();
+                   return true;
                   }
                   else
                   {
                    JOptionPane.showMessageDialog(null, "Invalid Username and Password", "Wrong Data", 2);
-
+                   return false;
                   }
             } catch (SQLException ex) {
-                Logger.getLogger(LOGIN.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("Exception : "+ex);
+                 JOptionPane.showMessageDialog(null, "Invalid Password");
+                return false;
             }
             
         }
@@ -302,8 +300,13 @@ public class LOGIN extends javax.swing.JFrame {
         else if(!flag){
              JOptionPane.showMessageDialog(null, "Special Character Required");
              jPasswordField1.setText(null);
+             return false;
         }
-        
+        return false;
+}
+    private void jButton_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_LoginActionPerformed
+        // TODO add your handling code here:
+        login(jTextField_Username.getText(), jPasswordField1.getText());
     }//GEN-LAST:event_jButton_LoginActionPerformed
 
     private void jLabel_RegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_RegisterMouseClicked

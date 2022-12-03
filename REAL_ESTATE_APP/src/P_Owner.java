@@ -80,7 +80,7 @@ public class P_Owner {
     
     //create a function to add a new owner
     //create owner table in database
-    /*public boolean addNewOwner(P_Owner owner)
+    public boolean addNewOwner(P_Owner owner)
     {
         PreparedStatement ps;
         String addQuery="INSERT INTO property_owner(fname, lname, phone, email, address) VALUES (?,?,?,?,?)";
@@ -99,7 +99,7 @@ public class P_Owner {
             return false;
         }
     }
-    */
+    
     //create a function to edit the selected owner data
     public boolean editOwnerData(P_Owner owner)
     {
