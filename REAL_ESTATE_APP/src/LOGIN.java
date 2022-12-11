@@ -3,8 +3,6 @@ import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -249,10 +247,10 @@ public boolean login(String uname, String pass){
             }
             else if(pass.charAt(i) != '@'){
                 flag = false;
-                System.out.println("Invalid Password");
+               
             }
         }
-     
+     if(flag == false ){ System.out.println("Invalid Password");}
         if(flag){
         PreparedStatement ps;
         String selectquery="SELECT * FROM register WHERE u_uname=? AND u_pass=?";
@@ -277,6 +275,7 @@ public boolean login(String uname, String pass){
                 
                   if(us.equals(uname) && pw.equals(pass))      
                   {
+                   JOptionPane.showMessageDialog(null,"Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
                    Home_Page mainform=new Home_Page();
                    mainform.setVisible(true);
                    mainform.pack();
