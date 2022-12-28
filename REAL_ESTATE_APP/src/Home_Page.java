@@ -157,6 +157,9 @@ public class Home_Page extends javax.swing.JFrame {
         jButton1_Owner.setForeground(new java.awt.Color(102, 102, 102));
         jButton1_Owner.setText("Owner");
         jButton1_Owner.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1_OwnerMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButton1_OwnerMouseEntered(evt);
             }
@@ -351,6 +354,10 @@ public class Home_Page extends javax.swing.JFrame {
         Client_Window cw=new Client_Window();
         cw.setVisible(true);
     }//GEN-LAST:event_jButton1_ClientActionPerformed
+
+    private void jButton1_OwnerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1_OwnerMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1_OwnerMouseClicked
 
     /**
      * @param args the command line arguments
