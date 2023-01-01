@@ -1,5 +1,9 @@
 
 import java.awt.Color;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
@@ -538,6 +542,7 @@ public class Property_Window extends javax.swing.JFrame {
         {
             
         JOptionPane.showMessageDialog(null, "Property Data Updated", "Edit Property", 1);
+        //Admin_notify("Edit");
                 }
         else
         {
@@ -570,6 +575,7 @@ public class Property_Window extends javax.swing.JFrame {
                 if(property.removeProperty(id))
                 {
                     JOptionPane.showMessageDialog(null, "Property Data Deleted", "Delete Property", 1);
+                    //Admin_notify("Delete");
                    //clear all fields after deleting the property
                    jTextField_id.setText("");
                 
@@ -633,6 +639,7 @@ public class Property_Window extends javax.swing.JFrame {
         {
             
         JOptionPane.showMessageDialog(null, "New Property Added to the system", "Add Property", 1);
+        Admin_notify("Add");
                 }else
         {
             JOptionPane.showMessageDialog(null, "Property Not Added to the system", "Add Property", 2);
@@ -720,6 +727,53 @@ public class Property_Window extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, ex.getMessage() + "Enter a Valid Property Id",  "Invalid Id", 0);
         }
+    }
+        public void Admin_notify(String notification_type){
+          PreparedStatement ps;
+          ArrayList<String> users = new ArrayList();
+          
+                try {
+                //query delete
+                ps=THE_CONNECTION.getTheConnection().prepareStatement("select u_uname from register");
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                    String user = rs.getString("u_uname");
+                    users.add(user);
+                }
+              switch (notification_type) {
+                  case "Add":
+                      for(int i=0; i<users.size(); i++){
+                          System.out.println("Hey "+users.get(i)+notifier("Add"));
+                      } break;
+                  case "Update":
+                      for(int i=0; i<users.size(); i++){
+                          System.out.println("Hey "+users.get(i)+notifier("Update"));
+                      } break;
+                  case "Delete":
+                      for(int i=0; i<users.size(); i++){
+                          System.out.println("Hey "+users.get(i)+notifier("Delete"));
+                      } break;
+                  default:
+                      break;
+              }
+            
+                   
+            } catch (SQLException ex) {
+                System.out.println("Exception raised = "+ex);
+            }
+          
+    }
+    public String notifier(String type){
+        switch (type) {
+            case "add":
+               return("New property was Added");
+            case "update":
+               return("New property was Updated"); 
+            case "delete":
+                return("New property was Deleted");
+        }
+        return null;
+    
     }//GEN-LAST:event_jButton_Search_PropertyActionPerformed
 
     /**
