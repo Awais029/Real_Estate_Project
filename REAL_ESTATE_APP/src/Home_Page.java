@@ -121,6 +121,9 @@ public class Home_Page extends javax.swing.JFrame {
         jButton1_Property_Type.setForeground(new java.awt.Color(102, 102, 102));
         jButton1_Property_Type.setText("Property-Type");
         jButton1_Property_Type.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1_Property_TypeMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButton1_Property_TypeMouseEntered(evt);
             }
@@ -358,6 +361,10 @@ public class Home_Page extends javax.swing.JFrame {
     private void jButton1_OwnerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1_OwnerMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1_OwnerMouseClicked
+
+    private void jButton1_Property_TypeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1_Property_TypeMouseClicked
+        
+    }//GEN-LAST:event_jButton1_Property_TypeMouseClicked
 
     /**
      * @param args the command line arguments

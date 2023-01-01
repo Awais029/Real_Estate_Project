@@ -462,6 +462,11 @@ public class Client_Window extends javax.swing.JFrame {
                 if(client.deleteClient(clientId))
                 {
                     JOptionPane.showMessageDialog(null, "Client Data Deleted", "Delete Client", 1);
+                    jTextField_id.setText("");
+                    jTextField_FName.setText("");
+                    jTextField_LName.setText("");
+                    jTextField_Email.setText("");
+                    jTextArea_Address.setText("");
                 }else
                 {
                      JOptionPane.showMessageDialog(null, "Operation Failed", "Delete Client", 2);

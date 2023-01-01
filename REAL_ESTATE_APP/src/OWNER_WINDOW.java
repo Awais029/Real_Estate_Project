@@ -1,28 +1,16 @@
 
 import java.awt.Color;
-//import java.sql.Connection;
-//import java.sql.DriverManager;
-//import java.sql.PreparedStatement;
-//import java.sql.ResultSet;
-//import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 //import javax.swing.JTable;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author Admin
  */
-public class Owner_Window extends javax.swing.JFrame {
+public class Owner_Window extends javax.swing.JFrame implements Runnable{
 
     /**
      * Creates new form OWNER_WINDOW
@@ -39,42 +27,13 @@ public class Owner_Window extends javax.swing.JFrame {
          jButton_Edit_Owner.setBorder(button_border);
          jButton_Remove_Owner.setBorder(button_border);
          jButton_Refresh.setBorder(button_border);
-         
-        fillJtableWithOwnersData();
+         run();
+       
     }
  
     //we will create a function to populate the jtable with all the owners datausing the array list
     //after that when user select an owner from the jtable all information will be displayed in jtext fields
-    public void fillJtableWithOwnersData()
-    {
-        P_Owner owner = new P_Owner();
-        ArrayList<P_Owner> ownersList=owner.ownersList();
-        //jtable coloumns
-        String[] colNames={"ID","First Name","Last Name","Phone","Email","Address"};
-        
-        //jtable row
-        Object [][] rows=new Object[ownersList.size()][6];
-        
-        //add data from list to rows
-        
-        for(int i=0; i<ownersList.size(); i++)
-        {
-            rows[i][0]=ownersList.get(i).getId();
-            rows[i][1]=ownersList.get(i).getFname();
-            rows[i][2]=ownersList.get(i).getLname();
-            rows[i][3]=ownersList.get(i).getPhone();
-            rows[i][4]=ownersList.get(i).getEmail();
-            rows[i][5]=ownersList.get(i).getAddress();
-        }
-        
-        DefaultTableModel model=new DefaultTableModel (rows, colNames);
-        property_table.setModel(model);
-        
-        property_table.setRowHeight(40);
-        property_table.setSelectionBackground(Color.DARK_GRAY);
-        property_table.getColumnModel().getColumn(0).setPreferredWidth(25);
-         property_table.getColumnModel().getColumn(5).setPreferredWidth(100);
-    }
+
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -554,6 +513,12 @@ public class Owner_Window extends javax.swing.JFrame {
                 if(owner.deleteOwner(ownerId))
                 {
                     JOptionPane.showMessageDialog(null, "Owner Data Deleted", "Delete Owner", 1);
+                    jTextField_id.setText("");
+                    jTextField_FName.setText("");
+                    jTextField_LName.setText("");
+                    jTextField_Email.setText("");
+                    jTextArea_Address.setText("");
+                    
                 }else
                 {
                      JOptionPane.showMessageDialog(null, "Operation Failed", "Delete Owner", 2);
@@ -589,7 +554,7 @@ public class Owner_Window extends javax.swing.JFrame {
 
     private void jButton_RefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RefreshActionPerformed
         // TODO add your handling code here:
-        fillJtableWithOwnersData();
+       run();
     }//GEN-LAST:event_jButton_RefreshActionPerformed
 
     private void jButton_Owner_PropertiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Owner_PropertiesActionPerformed
@@ -660,4 +625,40 @@ public class Owner_Window extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField_id;
     private javax.swing.JTable property_table;
     // End of variables declaration//GEN-END:variables
+
+    
+    @Override
+    public void run() {
+//Multithreading
+        P_Owner owner = new P_Owner();
+        ArrayList<P_Owner> ownersList=owner.ownersList();
+        //jtable coloumns
+        String[] colNames={"ID","First Name","Last Name","Phone","Email","Address"};
+        
+        //jtable row
+        Object [][] rows=new Object[ownersList.size()][6];
+        
+        //add data from list to rows
+        
+        for(int i=0; i<ownersList.size(); i++)
+        {
+            rows[i][0]=ownersList.get(i).getId();
+            rows[i][1]=ownersList.get(i).getFname();
+            rows[i][2]=ownersList.get(i).getLname();
+            rows[i][3]=ownersList.get(i).getPhone();
+            rows[i][4]=ownersList.get(i).getEmail();
+            rows[i][5]=ownersList.get(i).getAddress();
+        }
+        
+        DefaultTableModel model=new DefaultTableModel (rows, colNames);
+        property_table.setModel(model);
+        
+        property_table.setRowHeight(40);
+        property_table.setSelectionBackground(Color.DARK_GRAY);
+        property_table.getColumnModel().getColumn(0).setPreferredWidth(25);
+        property_table.getColumnModel().getColumn(5).setPreferredWidth(100);
+    
+    }
+
+    
 }

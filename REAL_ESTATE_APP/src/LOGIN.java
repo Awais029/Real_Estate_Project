@@ -1,4 +1,4 @@
-
+import FacadePattern.MemberMaker;
 import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -239,18 +239,22 @@ public class LOGIN extends javax.swing.JFrame {
        } 
     }//GEN-LAST:event_jPasswordField1FocusLost
 public boolean login(String uname, String pass){
-        boolean flag = false;
-        for(int i=0; i<pass.length(); i++){
-            if(pass.charAt(i) == '@'){
-                flag = true;
-                break;
-            }
-            else if(pass.charAt(i) != '@'){
-                flag = false;
+      
+     boolean flag = false;
+  MemberMaker n =  new MemberMaker ();
+flag = n.check(pass);
+//    boolean flag = false;
+//        for(int i=0; i<pass.length(); i++){
+//            if(pass.charAt(i) == '@'){
+//                flag = true;
+//                break;
+//            }
+            //else if(pass.charAt(i) != '@'){
+               // flag = false;
                
-            }
-        }
-     if(flag == false ){ System.out.println("Invalid Password");}
+            //}
+    //    }
+    // if(flag == false ){ System.out.println("Invalid Password");}
         if(flag){
         PreparedStatement ps;
         String selectquery="SELECT * FROM register WHERE u_uname=? AND u_pass=?";

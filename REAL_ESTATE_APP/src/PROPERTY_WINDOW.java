@@ -1,6 +1,8 @@
 
 import java.awt.Color;
+import java.util.HashMap;
 import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 
 /*
@@ -15,6 +17,9 @@ import javax.swing.border.Border;
  */
 public class Property_Window extends javax.swing.JFrame {
 
+    
+    P_TYPE type=new P_TYPE();
+    HashMap <String, Integer>map=type.getTypesMap();
     /**
      * Creates new form PROPERTY_WINDOW
      */
@@ -22,16 +27,24 @@ public class Property_Window extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo (null);
          Border panel_title_border=BorderFactory.createMatteBorder(0, 0, 3, 0, new Color(255,255,255));
-         jPanel_Property_Title.setBorder(panel_title_border);
-        
+         jPanel_Property_Title.setBorder(panel_title_border);   
         //set border to jbuttons
         Border button_border=BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(255,255,255));
         jButton_Add_Property.setBorder(button_border);
          jButton_Edit_Property.setBorder(button_border);
          jButton_Remove_Property.setBorder(button_border);
-         jButton_Search_Property.setBorder(button_border);
+         jButton_Show_Properties.setBorder(button_border); 
+         //populate combobox
+         bindCombo();
     }
-
+    
+    public void bindCombo()
+    {
+        for(String s : map.keySet())
+        {
+            jComboBox_Type.addItem(s);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,11 +84,12 @@ public class Property_Window extends javax.swing.JFrame {
         jLabel_Name7 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea_Address = new javax.swing.JTextArea();
-        jCheckBox_Balcone = new javax.swing.JCheckBox();
+        jCheckBox_Balcony = new javax.swing.JCheckBox();
         jCheckBox_Pool = new javax.swing.JCheckBox();
         jCheckBox_Garage = new javax.swing.JCheckBox();
         jCheckBox_Backyard = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
+        jButton_Show_Properties = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -115,7 +129,7 @@ public class Property_Window extends javax.swing.JFrame {
         jLabel_Name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_Name.setText("Square ft");
 
-        jTextField_id.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        jTextField_id.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jTextField_id.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField_id.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 204)));
         jTextField_id.addActionListener(new java.awt.event.ActionListener() {
@@ -130,7 +144,7 @@ public class Property_Window extends javax.swing.JFrame {
         jLabel_description.setText("Address:");
 
         jTextArea_Description.setColumns(20);
-        jTextArea_Description.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
+        jTextArea_Description.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jTextArea_Description.setRows(5);
         jTextArea_Description.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 204)));
         jScrollPane1.setViewportView(jTextArea_Description);
@@ -170,7 +184,7 @@ public class Property_Window extends javax.swing.JFrame {
         jLabel_Name1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_Name1.setText("Type:");
 
-        jTextField_SquareFeet.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        jTextField_SquareFeet.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jTextField_SquareFeet.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField_SquareFeet.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 204)));
 
@@ -179,7 +193,7 @@ public class Property_Window extends javax.swing.JFrame {
         jLabel_Name2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_Name2.setText("Price(pkr):");
 
-        jTextField_OwnerId.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        jTextField_OwnerId.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jTextField_OwnerId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField_OwnerId.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 204)));
 
@@ -188,7 +202,7 @@ public class Property_Window extends javax.swing.JFrame {
         jLabel_Name3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_Name3.setText("Owner Id");
 
-        jTextField_Price.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        jTextField_Price.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jTextField_Price.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField_Price.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 204)));
         jTextField_Price.addActionListener(new java.awt.event.ActionListener() {
@@ -198,9 +212,14 @@ public class Property_Window extends javax.swing.JFrame {
         });
 
         jButton_Search_Property.setText("Search");
+        jButton_Search_Property.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton_Search_Property.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_Search_PropertyActionPerformed(evt);
+            }
+        });
 
         jComboBox_Type.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jComboBox_Type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel_Name4.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel_Name4.setForeground(new java.awt.Color(255, 255, 255));
@@ -208,6 +227,7 @@ public class Property_Window extends javax.swing.JFrame {
         jLabel_Name4.setText("Bedrooms:");
 
         jSpinner_Bedrooms.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jSpinner_Bedrooms.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
         jLabel_Name5.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel_Name5.setForeground(new java.awt.Color(255, 255, 255));
@@ -215,6 +235,7 @@ public class Property_Window extends javax.swing.JFrame {
         jLabel_Name5.setText("Bathrooms:");
 
         jSpinner_Bathrooms.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jSpinner_Bathrooms.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
         jLabel_Name6.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel_Name6.setForeground(new java.awt.Color(255, 255, 255));
@@ -222,6 +243,7 @@ public class Property_Window extends javax.swing.JFrame {
         jLabel_Name6.setText("Age of the House:");
 
         jSpinner_Age.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jSpinner_Age.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
         jLabel1.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -233,18 +255,22 @@ public class Property_Window extends javax.swing.JFrame {
         jLabel_Name7.setText("Description/Comment:");
 
         jTextArea_Address.setColumns(20);
-        jTextArea_Address.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
+        jTextArea_Address.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jTextArea_Address.setRows(5);
         jTextArea_Address.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 204)));
         jScrollPane2.setViewportView(jTextArea_Address);
 
-        jCheckBox_Balcone.setText("Balcone");
-        jCheckBox_Balcone.addActionListener(new java.awt.event.ActionListener() {
+        jCheckBox_Balcony.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jCheckBox_Balcony.setForeground(new java.awt.Color(204, 0, 0));
+        jCheckBox_Balcony.setText("Balcony");
+        jCheckBox_Balcony.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox_BalconeActionPerformed(evt);
+                jCheckBox_BalconyActionPerformed(evt);
             }
         });
 
+        jCheckBox_Pool.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jCheckBox_Pool.setForeground(new java.awt.Color(204, 0, 0));
         jCheckBox_Pool.setText("Pool");
         jCheckBox_Pool.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -252,6 +278,8 @@ public class Property_Window extends javax.swing.JFrame {
             }
         });
 
+        jCheckBox_Garage.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jCheckBox_Garage.setForeground(new java.awt.Color(204, 0, 0));
         jCheckBox_Garage.setText("Garage");
         jCheckBox_Garage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -259,6 +287,8 @@ public class Property_Window extends javax.swing.JFrame {
             }
         });
 
+        jCheckBox_Backyard.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jCheckBox_Backyard.setForeground(new java.awt.Color(204, 0, 0));
         jCheckBox_Backyard.setText("Backyard");
         jCheckBox_Backyard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -271,6 +301,16 @@ public class Property_Window extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton_Show_Properties.setBackground(new java.awt.Color(204, 0, 204));
+        jButton_Show_Properties.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton_Show_Properties.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_Show_Properties.setText("Show Properties");
+        jButton_Show_Properties.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_Show_PropertiesActionPerformed(evt);
             }
         });
 
@@ -287,27 +327,10 @@ public class Property_Window extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel_Name3)
                             .addComponent(jLabel_Name2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField_OwnerId, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField_Price, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_SquareFeet, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel_Name1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(jLabel_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox_Type, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextField_id, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton_Search_Property, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -317,48 +340,63 @@ public class Property_Window extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton_Add_Property, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jButton_Add_Property, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel_Name1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(jLabel_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 29, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jTextField_id, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton_Search_Property, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jComboBox_Type, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextField_SquareFeet, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(168, 168, 168)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                        .addComponent(jSpinner_Age, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jSpinner_Age))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jButton_Edit_Property, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton_Remove_Property, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(162, 162, 162)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel_Name5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jSpinner_Bathrooms, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel_Name4, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jSpinner_Bedrooms, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel_Name6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel_Name7, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_Name6)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton_Edit_Property, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel_Name7, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                    .addComponent(jLabel_Name5)
+                                    .addComponent(jLabel_Name4, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(103, 103, 103)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jSpinner_Bedrooms, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                                    .addComponent(jSpinner_Bathrooms))))))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jCheckBox_Backyard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jCheckBox_Pool, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jCheckBox_Balcone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jCheckBox_Garage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(190, 190, 190))
+                        .addGap(0, 18, Short.MAX_VALUE)
+                        .addComponent(jButton_Show_Properties, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(89, 89, 89))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addComponent(jButton_Remove_Property, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jCheckBox_Pool, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCheckBox_Balcony, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCheckBox_Backyard)
+                            .addComponent(jCheckBox_Garage, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -367,25 +405,28 @@ public class Property_Window extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(77, 77, 77)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField_id, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(79, 79, 79)
-                        .addComponent(jButton_Search_Property, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton_Search_Property, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField_id, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel_Name1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox_Type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel_Name4, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel_Name1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel_Name4, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jComboBox_Type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField_SquareFeet, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel_Name5, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSpinner_Bathrooms, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(42, 42, 42)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -399,45 +440,47 @@ public class Property_Window extends javax.swing.JFrame {
                                             .addComponent(jTextField_Price, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(10, 10, 10)
-                                        .addComponent(jLabel1))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jSpinner_Age, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel1)))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel_Name6, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jSpinner_Age, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(22, 22, 22))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel_Name6, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jCheckBox_Garage)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(7, 7, 7)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCheckBox_Balcone)
-                            .addComponent(jSpinner_Bedrooms, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBox_Balcony)
+                            .addComponent(jSpinner_Bedrooms, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jCheckBox_Pool)
                         .addGap(18, 18, 18)
-                        .addComponent(jCheckBox_Backyard)
-                        .addGap(18, 18, 18)
-                        .addComponent(jCheckBox_Garage)))
-                .addGap(41, 41, 41)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jCheckBox_Backyard)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel_Name7, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(11, 11, 11)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel_description))))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_description)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel_Name7, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(44, 44, 44)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton_Remove_Property, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton_Add_Property, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton_Edit_Property, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton_Add_Property, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16))))
+                            .addComponent(jButton_Remove_Property, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton_Show_Properties, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(29, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -465,24 +508,150 @@ public class Property_Window extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_idActionPerformed
 
     private void jButton_Edit_PropertyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Edit_PropertyActionPerformed
-        // TODO add your handling code here:
+        // edit the selected property
+         try
+        {
+        int Id = Integer.valueOf(jTextField_id.getText());
+        int type = map.get(jComboBox_Type.getSelectedItem().toString());
+        int ownerId = Integer.valueOf(jTextField_OwnerId.getText());
+        int squareFeet = Integer.valueOf(jTextField_SquareFeet.getText());
+        int bedrooms = Integer.valueOf(jSpinner_Bedrooms.getValue().toString());
+        int bathrooms = Integer.valueOf(jSpinner_Bathrooms.getValue().toString());
+        int age = Integer.valueOf(jSpinner_Age.getValue().toString()); 
+        boolean haveBalcony=false;
+        boolean havePool=false;
+        boolean haveBackyard=false;
+        boolean haveGarage=false;
+        //check if the property have balcony,pool.........
+        if(jCheckBox_Balcony.isSelected()) haveBalcony =true;
+        if(jCheckBox_Pool.isSelected()) havePool =true;
+        if(jCheckBox_Backyard.isSelected()) haveBackyard =true;
+        if(jCheckBox_Garage.isSelected()) haveGarage =true;
+        
+        String price = jTextField_Price.getText();
+        String address = jTextArea_Address.getText();
+        String description = jTextArea_Description.getText();
+        
+        P_Property property = new P_Property(Id, type, squareFeet, ownerId, price, address, bedrooms, bathrooms, age, haveBalcony, havePool, haveBackyard, haveGarage, description);
+        
+        if(new P_Property().editProperty(property))
+        {
+            
+        JOptionPane.showMessageDialog(null, "Property Data Updated", "Edit Property", 1);
+                }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Property Data Not Updated", "Edit Property", 2);
+        } 
+        }
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, ex.getMessage() + "Enter a Valid Property ID, Owner ID and Square Feet Value",  "Invalid Data", 0);
+        }
     }//GEN-LAST:event_jButton_Edit_PropertyActionPerformed
 
     private void jButton_Remove_PropertyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Remove_PropertyActionPerformed
-        // TODO add your handling code here:
+        try{
+            //deleting the selected property from the system
+        int id=Integer.valueOf(jTextField_id.getText());
+        
+        P_Property property = new P_Property();
+        
+        if(jTextField_id.getText().trim().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Enter the Property ID", "Empty ID", 2);
+        }
+        else
+        {
+            //show a confirmation message before deleting the type
+            int yes_or_no =JOptionPane.showConfirmDialog(null, "Do you want to delete Property", "Deleted Property", JOptionPane.YES_NO_OPTION);
+            if(yes_or_no==JOptionPane.YES_OPTION)
+            {
+                if(property.removeProperty(id))
+                {
+                    JOptionPane.showMessageDialog(null, "Property Data Deleted", "Delete Property", 1);
+                   //clear all fields after deleting the property
+                   jTextField_id.setText("");
+                
+               jTextArea_Address.setText("");
+               jTextArea_Description.setText("");
+               jTextField_Price.setText("");
+               jTextField_SquareFeet.setText("");
+               jTextField_OwnerId.setText("");
+               jComboBox_Type.setSelectedIndex(0);
+               
+               jSpinner_Bedrooms.setValue(0);
+               jSpinner_Bathrooms.setValue(0);
+               jSpinner_Age.setValue(0);
+              
+               jCheckBox_Balcony.setSelected(false);
+               jCheckBox_Backyard.setSelected(false);
+               jCheckBox_Pool.setSelected(false);
+               jCheckBox_Garage.setSelected(false);
+                  
+                }else
+                {
+                     JOptionPane.showMessageDialog(null, "Operation Failed", "Delete Property", 2);
+                }
+            }
+        }
+        }catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, ex.getMessage() + "Enter a valid Property ID",  "Invalid Id", 0);
+        }
     }//GEN-LAST:event_jButton_Remove_PropertyActionPerformed
 
     private void jButton_Add_PropertyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Add_PropertyActionPerformed
-        // add A  new client
+        // add A  new property
+        //get the property data from text fields
+        
+        try
+        {
+        int type = map.get(jComboBox_Type.getSelectedItem().toString());
+        int ownerId = Integer.valueOf(jTextField_OwnerId.getText());
+        int squareFeet = Integer.valueOf(jTextField_SquareFeet.getText());
+        int bedrooms = Integer.valueOf(jSpinner_Bedrooms.getValue().toString());
+        int bathrooms = Integer.valueOf(jSpinner_Bathrooms.getValue().toString());
+        int age = Integer.valueOf(jSpinner_Age.getValue().toString()); 
+        boolean haveBalcony=false;
+        boolean havePool=false;
+        boolean haveBackyard=false;
+        boolean haveGarage=false;
+        //check if the property have balcony,pool.........
+        if(jCheckBox_Balcony.isSelected()) haveBalcony =true;
+        if(jCheckBox_Pool.isSelected()) havePool =true;
+        if(jCheckBox_Backyard.isSelected()) haveBackyard =true;
+        if(jCheckBox_Garage.isSelected()) haveGarage =true;
+        
+        String price = jTextField_Price.getText();
+        String address = jTextArea_Address.getText();
+        String description = jTextArea_Description.getText();
+        
+        P_Property property = new P_Property(0, type, squareFeet, ownerId, price, address, bedrooms, bathrooms, age, haveBalcony, havePool, haveBackyard, haveGarage, description);
+        
+        if(new P_Property().addNewProperty(property))
+        {
+            
+        JOptionPane.showMessageDialog(null, "New Property Added to the system", "Add Property", 1);
+                }else
+        {
+            JOptionPane.showMessageDialog(null, "Property Not Added to the system", "Add Property", 2);
+        } 
+        
+        }
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, ex.getMessage() + "Enter a Valid Owner Id and Square Feet",  "Invalid Data", 0);
+        }
     }//GEN-LAST:event_jButton_Add_PropertyActionPerformed
 
     private void jTextField_PriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PriceActionPerformed
 
     }//GEN-LAST:event_jTextField_PriceActionPerformed
 
-    private void jCheckBox_BalconeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox_BalconeActionPerformed
+    private void jCheckBox_BalconyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox_BalconyActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox_BalconeActionPerformed
+    }//GEN-LAST:event_jCheckBox_BalconyActionPerformed
 
     private void jCheckBox_PoolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox_PoolActionPerformed
         // TODO add your handling code here:
@@ -502,6 +671,56 @@ public class Property_Window extends javax.swing.JFrame {
         h.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton_Show_PropertiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Show_PropertiesActionPerformed
+        //show all properties in new form
+         this.dispose();
+        SHOW_PROPERTIES_WINDOW showPropertyForm=new SHOW_PROPERTIES_WINDOW();
+        showPropertyForm.setVisible(true);
+    }//GEN-LAST:event_jButton_Show_PropertiesActionPerformed
+
+    private void jButton_Search_PropertyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Search_PropertyActionPerformed
+        // search property by id 
+        //and display property data
+        try
+        {
+            int propertyId=Integer.valueOf(jTextField_id.getText());
+            P_Property property=new P_Property().findProperty(propertyId);
+            
+            if(property != null)
+            {
+               jTextArea_Address.setText(property.getAddress());
+               jTextArea_Description.setText(property.getDescription());
+               jTextField_Price.setText(property.getPrice());
+               jTextField_SquareFeet.setText(String.valueOf(property.getSize()));
+               jTextField_OwnerId.setText(String.valueOf(property.getOwnerId()));
+               
+               //display property type in combo box
+               for(Object type : map.keySet())
+               {
+                   if(map.get(type).equals(property.getType()))
+                       jComboBox_Type.setSelectedItem(type);
+               }
+               
+               jSpinner_Bedrooms.setValue(property.getBedrooms());
+               jSpinner_Bathrooms.setValue(property.getBathrooms());
+               jSpinner_Age.setValue(property.getAge());
+              
+               if(property.isBalcone()) jCheckBox_Balcony.setSelected(true);
+               if(property.isBackyard()) jCheckBox_Backyard.setSelected(true);
+               if(property.isPool()) jCheckBox_Pool.setSelected(true);
+               if(property.isGarage()) jCheckBox_Garage.setSelected(true);
+               
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Property Not Found", "Error", 0);
+            }
+        }catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, ex.getMessage() + "Enter a Valid Property Id",  "Invalid Id", 0);
+        }
+    }//GEN-LAST:event_jButton_Search_PropertyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -545,8 +764,9 @@ public class Property_Window extends javax.swing.JFrame {
     private javax.swing.JButton jButton_Edit_Property;
     private javax.swing.JButton jButton_Remove_Property;
     private javax.swing.JButton jButton_Search_Property;
+    private javax.swing.JButton jButton_Show_Properties;
     private javax.swing.JCheckBox jCheckBox_Backyard;
-    private javax.swing.JCheckBox jCheckBox_Balcone;
+    private javax.swing.JCheckBox jCheckBox_Balcony;
     private javax.swing.JCheckBox jCheckBox_Garage;
     private javax.swing.JCheckBox jCheckBox_Pool;
     private javax.swing.JComboBox<String> jComboBox_Type;
